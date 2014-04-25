@@ -38,13 +38,16 @@ test <- cbind(testData, testActivity, testSubject)
 
 #Merges the training and the test sets to create one data set
 mergedData <-rbind(train,test)
-cols <- length(mergedData)
-cols <- c(cols-1,cols)
+
 
 #Extracts only the measurements on the mean and standard deviation for each measurement.
+cols <- length(mergedData)
+cols <- c(cols-1,cols)
 mergedData <- mergedData[c(grep("mean\\(\\)|std\\(\\)", features[[2]]), cols)]
 
 #Appropriately labels the data set with descriptive activity names
+cols <- length(mergedData)
+cols <- c(cols-1,cols)
 names(cols) <- c("Activity","Subject")
 names(mergedData)[cols] <- names(cols)
 
@@ -55,8 +58,7 @@ mergedData$Activity <- as.factor(mergedData$Activity)
 mergedData$Activity <- Labels[mergedData$Activity]
 
 #Independent tidy data set with the average of each variable for each activity and each subject.
-FinalTable <- aggregate(. ~ Activity+Subject, data = SubData, mean)
+FinalTable <- aggregate(. ~ Activity+Subject, data = mergedData, mean)
 
-#Export Data into CSV file
-write.csv(FinalTable, file="UCI HAR Dataset.csv", row.names=FALSE)
-
+#Export Data into comma based data file (But .txt) to be uploal in the course page
+write.csv(FinalTable, file="UCI HAR Dataset.txt", row.names=FALSE)
