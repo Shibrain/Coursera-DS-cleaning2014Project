@@ -1,7 +1,8 @@
-Coursera-DS-cleaning2014Project
+
+Getting and Cleaning Data Course Project
 ===============================
 
-Getting and Cleaning Data Course Project - Coursera
+Coursera-DS-cleaning2014Project
 
 CodeBook.md Would Introduce you to the project and describe the code.
 
